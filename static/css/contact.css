@@ -1,0 +1,108 @@
+html, body{
+    margin:0;
+    padding:0;
+    width:100;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #ff95c5;
+    text-align: center;
+    margin: 0;
+}
+
+h1{
+    color:white;
+    margin-top: 0;
+}
+
+h2{
+    color: white;
+    font-family: Cambria, Georgia, Times, serif;
+    text-align: center;
+    font-size: 30px;
+}
+.navbar ul{
+    margin:0;
+    list-style-type: none;
+    background-color: rgba(255, 105, 193, 0.763);
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 15px 50px;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+}
+
+.navbar a:hover{
+    background-color:rgb(252, 164, 217) ;
+}
+
+.navbar li{
+    float: left;
+}
+
+.openhours{
+    margin:0;
+    background-size: cover;
+    background-position: center;
+    height: 650px;
+    width: 100%;
+    color:white;
+    font-size: 20px;
+    background: linear-gradient(rgba(0,0,0,0.4), 
+                                 rgba(0,0,0,0.4)),
+                                  url("../assets/779e2bf5-e92a-4f5b-a486-2b65ebf90289.png");
+}
+
+p{
+    color:white;
+    text-align: left;
+    margin-top: 95px;
+    display: inline-block;
+}
+
+.map{
+    text-align: center;
+    
+}
+
+.map iframe{
+    width:100%;
+    height:300px;
+}
+
+@media (max-width: 768px) {
+
+    .navbar a {
+        padding: 12px 10px;
+        font-size: 16px;
+    }
+
+    .navbar li {
+        float: none;
+        display: inline-block;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .gallery {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .gallery img {
+        max-width: 100%;
+    }
+
+}

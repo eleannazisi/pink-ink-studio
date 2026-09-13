@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <h1>bookings</h1>
+    <div class="filters">
+
+        <a href="{{ url_for('admin', status='all') }}">All</a> &nbsp;
+        <a href="{{ url_for('admin', status='confirmed') }}">Confirmed</a> &nbsp;
+        <a href="{{ url_for('admin', status='canceled') }}">Canceled</a> &nbsp;
+        <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>&nbsp;
+        <a href="{{ url_for('admin_logout')}}">Logout</a>
+
+    </div>
+    <br>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
+    <form method="GET" action="{{ url_for('admin') }}">
+        <div class="search">
+            <span class="search-icon material-symbols-outlined">search</span>
+            <input class="search-input" type="search" placeholder="search" name="search" value="{{search}}">
+        </div>
+    </form>
+    <br>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Services</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+
+        {% for booking in bookings %}
+
+        <tr>
+            <td>{{ booking[0] }}</td>
+            <td>{{ booking[1] }}</td>
+            <td>{{ booking[2] }}</td>
+            <td>{{ booking[3] }}</td>
+            <td>{{ booking[4] }}</td>
+            <td>{{ booking[5] }}</td>
+            <td>{{ booking[6] }}</td>
+            <td>{{ booking[7] }}</td>
+            <td>{{ booking[8] }}</td>
+            <td>
+                {% if booking[6] != "canceled" %}
+                    <form method="POST" action="{{url_for('cancel_booking', booking_id=booking[0] )}}">
+                        <button type="submit">Cancel</button>
+                    </form>
+                {% else %}
+                    <span>Canceled</span>
+                {% endif %}            
+            </td>
+        </tr>
+        {% endfor %}  
+    </table>      
+    <br>
+    
+</body>
+</html>

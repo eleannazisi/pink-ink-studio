@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Ink</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+</head>
+<body>
+    
+    {% if booking_error %}
+            <p class="booking_error">
+                 This date and time are already booked.
+            </p>
+    {% endif %}
+
+     <h1>Pink Ink Studio</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+            <li><a href="{{ url_for('book') }}">Booking</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="services">
+        <h2>Services</h2>
+        <div class="buttons">
+
+                <button class="servmenu" onclick="nailmenu()">Nails (5)</button>
+                <button class="servmenu" onclick="lashmenu()">Eyelashes  (5)</button>
+                <button class="servmenu" onclick="tatmenu()">Tattoos  (5)</button>
+        </div>        
+
+    <div id="nail_info">
+                <div class="servitem">
+                        <span><br>&nbsp;  Manicure  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  20$</span><br>
+                </div>
+                <div class="servitem">
+                        <span><br>&nbsp;  Pedicure  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  15$</span><br>
+                </div>
+                <div class="servitem">    
+                        <span><br>&nbsp;  Nailart  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  2$</span><br>
+                </div>
+                <div class="servitem">    
+                        <span><br>&nbsp;  Acrygel  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  20$</span><br>
+                </div>
+                <div class="servitem">    
+                        <span><br>&nbsp;  Tips  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  18$</span><br>
+                </div>
+    </div>  
+                
+    <div id="lash_info">
+                    <div class="servitem">
+                        <span><br>&nbsp;   Lashlift  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;   15$</span><br>
+                    </div>
+                    <div class="servitem">
+                        <span><br>&nbsp;  Foxeye  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  25$</span><br>
+                    </div>
+                    <div class="servitem">    
+                        <span><br>&nbsp;  One By One  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  30$</span><br>
+                    </div>
+                    <div class="servitem">    
+                        <span><br>&nbsp;  Half set  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  20$</span><br>
+                    </div>
+                    <div class="servitem">    
+                        <span><br>&nbsp;  Tips  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  18$</span><br>
+                    </div>
+    </div>
+
+    <div id="tattoo_info">
+                    <div class="servitem">
+                        <span><br>&nbsp;  Mini Tattoo  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  40$</span><br>
+                    </div>
+                    <div class="servitem">
+                        <span><br>&nbsp;  Small Tattoo  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  50$</span><br>
+                    </div>
+                    <div class="servitem">    
+                        <span><br>&nbsp;  Medium Tattoo  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  80$</span><br>
+                    </div>
+                    <div class="servitem">    
+                        <span><br>&nbsp;  Large Tattoo  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  Price upon consultation</span><br>
+                    </div>
+                    <div class="servitem">    
+                        <span><br>&nbsp;  Cover Up  <button class="apointment" onclick="showbookingstep1()"> Book </button></span>
+                        <span>&nbsp;  Price upon consultation</span><br>
+                    </div>
+                    
+    </div>
+</div>
+
+<div class="footer">
+
+    <footer style="background-color:rgba(255, 105, 193, 0.763);">
+        <img src="{{ url_for('static', filename='assets/8d2a6119-0773-4aef-9b91-c34534ad9315.png') }}" alt="logo" style="width:115px"><br>
+        &copy; copyright reserved <br>
+        <a href="mailto: pinkinkstudio@gmail.com">pinkinkstudio@gmail.com</a>
+    </footer> 
+</div>  
+
+<form method="POST" action="{{ url_for('book') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" id="selectedDate" name="day">
+ <div id="bookingstep1">
+    <text>Service</text>
+    <button type="button" class="closebook" onclick="closebooking()">X</button>
+    <div class="serv">
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Manicure" value="Manicure">
+            <label for="Manicure">Manicure  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  20$</label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Pedicure" value="Pedicure">
+            <label for="Pedicure">Pedicure       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  15$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services"  id="Nailart" value="Nailart">
+            <label for="Nailart">Nailart   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   2$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Acrygel" value="Acrygel">
+            <label for="Acrygel">Acrygel  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  20$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Tips" value="Tips">
+            <label for="Tips">Tips &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   18$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Lashlift" value="Lashlift">
+            <label for="Lashlift">Lashlift  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  15$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Foxeye" value="Foxeye">
+            <label for="Foxeye">Foxeye   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   25$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="One By One" value="One By One">
+            <label for="One By One">One By One  &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   30$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Half set" value="Half set">
+            <label for="Half set">Half set &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   20$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Mini Tattoo" value="Mini Tattoo">
+            <label for="Mini Tattoo">Mini Tattoo       &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    40$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Small Tattoo" value="Small Tattoo">
+            <label for="Small Tattoo">Small Tattoo       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;    50$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Medium Tattoo" value="Medium Tattoo">
+            <label for="Medium Tattoo">Medium Tattoo  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 80$  </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Large Tattoo" value="Large Tattoo">
+            <label for="Large Tattoo">Large Tattoo  &nbsp; &nbsp; &nbsp; &nbsp;       Price upon consultation </label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="services" id="Cover Up" value="Cover Up">
+            <label for="Cover Up">Cover Up  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    Price upon consultation  </label>    
+       </div>
+       <br>
+   </div>
+   <button type="button" class="nextbutton" onclick="showbookingstep2()">next</button>
+ </div>
+ <div id="bookingstep2">
+    <text>Service</text>
+    <button type="button" class="closebook" onclick="closebooking()">X</button>
+    <div class="calendar">
+        <div class="header">
+            <div id="prev" class="btn">&lt;</div>
+            <div id="monthyear"></div>
+            <div id="next" class="btn">&gt;</div>
+        </div>
+        <div class="weekdays">
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <br>
+        </div>
+        <div class="days" id="days"></div>
+        <br>
+        <br>
+    </div>
+
+    <div class="time">
+        <p>Time</p>
+        <div>
+            <input type="checkbox" id="time1" name="time" value="10:00:00">
+            <label for="time1">10:00 AM</label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" id="time2" name="time" value="11:00:00">
+            <label for="time2">11:00 AM</label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" id="time3" name="time" value="12:00:00">
+            <label for="time3">12:00 PM</label>
+        </div>
+        <br>
+         <div>
+            <input type="checkbox" id="time4" name="time" value="13:00:00">
+            <label for="time4">13:00 PM</label>
+        </div>
+        <br>
+         <div>
+            <input type="checkbox" id="time5" name="time" value="14:00:00">
+            <label for="time5">14:00 PM</label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" id="time6" name="time" value="15:00:00">
+            <label for="time6">15:00 PM</label>
+        </div>
+        <br>
+         <div>
+            <input type="checkbox" id="time7" name="time" value="16:00:00">
+            <label for="time7">16:00 PM</label>
+        </div>
+        <br>
+    </div>
+    <button type="button" class="nextbutton2" onclick="showbookingstep3()">next</button>
+ </div>
+ <div id="bookingstep3">
+    <text>Service</text>
+    <button type="button" class="closebook" onclick="closebooking()">X</button>
+    <div class="personalinfo">
+        <div class="details">
+            <p>Personal Details</p>
+            <span class="pi2">Full Name</span><br>
+            <input type="text" class="pd" name="full_name" placeholder="Enter your name" required>
+            <br>
+            <br>
+            <span class="pi">Phone Number</span><br>
+            <input type="text" class="pd" name="phone" placeholder="Enter your phone number" required><br>
+            <br>
+            <span class="pi">Email Adress</span><br>
+            <input type="text" class="pd" name="email" placeholder="Enter your email" required><br>
+            <br><button type="submit" class="submit">Submit</button>
+        </div>
+        
+    </div>
+
+
+ </div>
+ </form>
+
+ <div id="successpopup">
+    <div class="popupcontent">
+        <span class="check">✓</span>
+        <h2>Booking Successful!</h2>
+        <p>Your appointment has been booked successfully.</p>
+        <div class="bookingdetails">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Date:</strong> {{ day }}</p>
+            <p><strong>Time:</strong> {{ time }}</p>
+            <p><strong>Service:</strong> {{ services }}</p>
+        </div>
+        <button onclick="closepopup()">OK</button>
+        <form method="POST" action="{{ url_for('user_cancel_booking') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="booking_id" value="{{ booking_id }}">
+            <button type="submit" id="cancelbutton" data_booking_id ="{{ booking_id }}" onclick="return confirm('Are you sure you want to cancel your apointment?')">Cancel Apointment</button>
+        </form>
+    </div>
+ </div>
+
+ <div id="cancellationpopup">
+    <div class="popupcontent">
+        <span class="check">✓</span>
+        <h2>Booking Cancelled!</h2>
+        <p>Your apointment has been cancelled!</p>
+        <button type="button" onclick="closecancellationpopup()">OK</button>
+    </div>
+ </div>
+
+<script src="{{ url_for('static', filename='js/services.js') }}"></script>
+
+{% if booking_success %}
+<script>
+    successpopup();
+</script>
+{% endif %}
+
+{% if cancellation_success %}
+<script>
+    cancellationpopup();
+</script>
+{% endif %}
+
+</body>
+</html>

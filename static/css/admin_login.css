@@ -1,0 +1,29 @@
+body{
+    background-color: rgb(250, 205, 212);
+}
+
+.borderbox{
+    box-sizing: border-box;
+    float:center;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    color: rgb(255, 2, 149);
+    width: 350px;
+    height:300px;
+    border-style: ridge;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-left: 33%;
+    margin-top: 70px;
+}
+
+h1{
+    color:rgb(255, 2, 149);
+    text-align: center;
+}
+
+p{
+    color:rgb(255, 2, 149);
+    text-align: center; 
+}

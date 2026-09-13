@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Ink</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <script src="{{ url_for('static', filename='js/services/js') }}"></script>
+</head>
+<body>
+    <h1>Pink Ink Studio</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+            <li><a href="{{ url_for('book') }}">Booking</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="openhours">
+        <br><h1>Contact with us</h1>
+
+        <h3>Opening Hours</h3><br>
+        <text>Monday      10:00 AM – 6:00 PM<br>
+                <br>Tuesday     10:00 AM – 6:00 PM<br>
+                <br>Wednesday   10:00 AM – 6:00 <br>
+                <br>Thursday    10:00 AM – 8:00 PM<br>
+                <br>Friday      10:00 AM – 8:00 PM<br>
+                <br>Saturday    10:00 AM – 4:00 PM<br>
+                <br>Sunday         Closed</text><br><br>
+
+        <br>
+        <p>Phone: +30 210 123 4567 &nbsp;|&nbsp; Email: pinkinkstudio@gmail.com &nbsp;|&nbsp; Address: 25 Example Street  Athens, Greece</text>   </p>      
+    </div>
+    <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100621.05473533199!2d23.655937018444924!3d37.99094375047785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd1f067043f1%3A0x2736354576668ddd!2sAthens!5e0!3m2!1sen!2sgr!4v1785254262700!5m2!1sen!2sgr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+<footer style="background-color:rgba(255, 105, 193, 0.763);">
+        <img src="{{ url_for('static', filename='assets/8d2a6119-0773-4aef-9b91-c34534ad9315.png') }}" alt="logo" style="width:115px"><br>
+        &copy; copyright reserved <br>
+        <a href="mailto: pinkinkstudio@gmail.com"></a>
+</footer>   
+    
+</body>
+</html>

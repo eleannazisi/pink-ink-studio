@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Ink</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+    <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+</head>
+<body>
+     <h1>Pink Ink Studio</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+            <li><a href="{{ url_for('book') }}">Booking</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    
+    
+    <div class = "gallery-container">
+                <img src="{{ url_for('static', filename='assets/7ea2d3196f148e9f5998d9329d023834.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/4035183909fd446ced656000b326ad15.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/61984e2d51738c173201289a89fffc9f.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/19bc4b68b60dc2f7b8d067a623d57aed.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/10776a7626ad5cfbb63130548dee215f.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/a1b6b219e0d4a09edd4c5be88e498f97.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/e3dc31cb79c6002a2a88095344bb1ea6.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/d862d3f76d89c80e6152afccddec8404.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/de7730c39af4564ad4bdfdb86fc0aaae.jpg') }}">
+                <img src="{{ url_for('static',filename='assets/d37a5904369e5a11e8877913e2dc7484.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/320901706dfca4b5a84074984727d5a1.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/c3071e65274109350d33ca089d6caabf.jpg') }}">
+    </div>
+<div class="footer">
+    <footer style="background-color:rgba(255, 105, 193, 0.763);">
+        <img src="{{ url_for('static',filename='assets/8d2a6119-0773-4aef-9b91-c34534ad9315.png') }}" alt="logo" style="width:115px"><br>
+        &copy; copyright reserved <br>
+        <a href="mailto: pinkinkstudio@gmail.com">pinkinkstudio@gmail.com</a>
+    </footer> 
+</div>          
+</body>
+</html>

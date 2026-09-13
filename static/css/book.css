@@ -1,0 +1,471 @@
+
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #ff95c5;
+    text-align: center;
+    margin:0;
+}
+
+h1{
+    color:white;
+    margin-bottom: -17px;
+}
+
+h2{
+    color: white;
+    font-family: Cambria, Georgia, Times, serif;
+    text-align: left;
+    font-size: 30px;
+}
+
+.navbar ul{
+    list-style-type: none;
+    background-color: rgba(255, 105, 193, 0.763);
+    padding: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 15px 50px;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+}
+
+.navbar a:hover{
+    background-color:rgb(252, 164, 217) ;
+}
+
+.navbar li{
+    float: left;
+}
+
+
+.services {
+    float: center;
+    color:white;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-style: ridge;
+    border-radius: 15px;
+    width: 1150px;
+    height: 955px;
+    border: 1px solid rgb(255, 255, 255);
+    margin-left: 50px;
+}
+
+.services h2{
+
+    margin-left: 20px;
+}
+
+.servmenu {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 25px;
+    font-size: 25px;
+    background-color:#ffb1c9;
+    color: white;
+    border-radius: 5px;
+    border-color: #ff95c5;
+    float: left;
+    width: 200px;
+    height: 70px;
+    font-size: 20px;
+    
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+#nail_info,
+#lash_info,
+#tattoo_info {
+    display: none;
+    text-align: left;
+    font-size: medium;
+    flex-direction: column;
+    float: none;
+    margin-left: 500px;
+    margin-top: -390px;
+    height:0px;
+    
+}
+
+.servitem {
+    display: flex;
+    color:white;
+    font-size: 23px;
+    box-sizing: border-box;
+    border-style: ridge;
+    border-radius: 15px;
+    width: 500px;
+    height: 200px;
+    border: 1px solid rgb(255, 255, 255);
+    flex-direction: column;
+    margin-bottom: 40px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+
+}    
+
+.footer {
+    margin-top: 35px;
+    margin-bottom: 0px;
+}
+
+.apointment{
+    float:right;
+    color:white;
+    background-color: rgba(255, 105, 193, 0.763);
+    border-radius: 10px;
+    font-size: 23px;
+    border: 2px solid white;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+#bookingstep1,
+#bookingstep2,
+#bookingstep3{
+    display: none;
+    position: fixed;
+    flex-direction:column;
+    box-sizing: border-box;
+    border-style: ridge;
+    float: center;
+    color:rgba(255, 105, 193, 0.763);
+    background-color: whitesmoke;
+    border: 1px solid rgb(255, 255, 255);
+    height: 100vh;
+    width: 100%;
+    top:0;
+    left: 0;
+    right: 0px;
+    position:fixed;
+    z-index: 1000;
+    text-align: center;
+    font-size: 28px;
+    gap: 7px;
+    overflow-y: auto;
+}
+text{
+    background-color: rgba(255, 105, 193, 0.763);
+    color: white;
+    font-size: 50px;
+
+}
+
+.serv{
+    box-sizing: border-box;
+    border-style: ridge;
+    border-radius: 15px;
+    width: 520px;
+    height: 1120px;
+    border: 2px solid rgba(255, 105, 193, 0.763);
+    float: center;
+    margin-left: 350px;
+    margin-top:15px;
+}
+
+#prev.btn,
+#next.btn{
+    width:35px;
+    height:35px;
+    border: 1ox solid #ff69b4;
+    border-radius: 50%;
+    background-color: white;
+    color:#ff69b4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weekdays{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+#days {
+    display:grid !important;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#days button {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 10px;
+    background-color: white;
+    color: #ff69b4;
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
+    
+}
+
+#days button.selected {
+    background-color: #ff69b4;
+    color:white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.calendar{
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 15px;
+    height: 1200px;
+    width: 520px;
+    padding: 20px;
+    color: #ff69b4;
+    margin-left: 20px;
+    border: 2px solid rgba(255, 105, 193, 0.763);
+    margin-top: 80px;
+}
+
+.time{
+    box-sizing: border-box;
+    border-style: ridge;
+    border-radius: 15px;
+    width: 520px;
+    height: 1000px;
+    border: 2px solid rgba(255, 105, 193, 0.763);
+    margin-left: 700px;
+    margin-bottom: 150px;
+    margin-top: -570px;
+
+}
+
+.nextbutton2{
+    margin-top: -100px;
+    color: white;
+    background-color: rgba(255, 105, 193, 0.763);
+    border: 2px solid white;
+    font-size: 30px;
+}
+
+.closebook{
+    color: white;
+    background-color: rgba(240, 131, 195, 0);
+    border: none;
+    font-size: 30px;
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    z-index: 9999;
+}
+
+.nextbutton{
+    margin-bottom: 45px;
+    margin-top: 35px;
+    background-color: rgba(255, 105, 193, 0.763);
+    color: white;
+    border: 2px solid white;
+    font-size: 30px;
+}
+
+.personalinfo{
+    box-sizing: border-box;
+    border-style: ridge;
+    border-radius: 15px;
+    width: 520px;
+    height: 1000px;
+    border: 2px solid rgba(255, 105, 193, 0.763);
+    float: center;
+    margin-top: 25px;
+    margin-left: 400px;
+    margin-bottom: 40px;
+
+}
+
+.details{
+    float:center;
+    margin-top: 25px;
+    margin-left: 15px;
+    text-align: center;
+    
+    
+}
+
+.booking_error {
+    color: rgb(244, 4, 88);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.submit{
+    background-color: rgba(255, 105, 193, 0.763);
+    color: white;
+    border: 2px solid white;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+}
+
+h2{
+    color:white;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.pd{
+    height:30px;
+}
+
+.pi{
+    margin-left: -55px;
+    font-size: 20px;
+}
+
+.pi2{
+    margin-left: -60px;
+    font-size: 20px;
+}
+
+p{
+    color: rgba(255, 105, 193, 0.763);
+    font-size: 25px;
+}
+
+#successpopup{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+#cancellationpopup{
+    display:none;
+    top:33%;
+    left:35%;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.popupcontent{
+    background-color: #fabccf;
+    padding:40px;
+    border-radius: 20px;
+    text-align: center;
+    width:350px;
+}
+
+.check{
+    font-size: 50px;
+    color:rgb(241, 60, 157);
+}
+
+.popupcontent h2{
+    color:rgb(241, 60, 157);
+}
+
+.popupcontent button{
+    background-color:rgb(241, 60, 157);
+    color:white;
+    border:none;
+    padding: 10px 30px;
+    border-radius: 10px;
+
+}
+
+@media (max-width: 768px) {
+
+    .navbar a {
+        padding: 12px 10px;
+        font-size: 16px;
+    }
+
+    .navbar li {
+        float: none;
+        display: inline-block;
+    }
+
+    
+
+    .services {
+        width: 95%;
+        margin: 0 auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #nail_info,
+    #lash_info,
+    #tattoo_info {
+        position: static;
+        display: none;
+        width: 100%;
+        height: auto;
+        margin: 20px 0 0 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .servitem {
+        float: none;
+        width: 90%;
+        max-width: 400px;
+        height: 70px;
+        margin: 10px auto;
+        width: 90%;
+        max-width: 350px;
+        height: 85px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .buttons {
+        margin-top: 0px;
+        padding-top: 0;
+        margin-left: 0;
+        align-items: center;
+    }
+
+    .servmenu {
+        float: none;
+        margin: 5px auto;
+        display: block;
+    }
+
+}

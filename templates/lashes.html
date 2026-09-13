@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Ink</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lashes.css') }}">
+    <script src="{{ url_for('static', filename='js/services.js')}}"></script>
+</head>
+<body>
+    <h1>Pink Ink Studio</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+            <li><a href="{{ url_for('book') }}">Booking</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <h2>Our Work</h2>  
+<div class = "container">
+    <div class = "gallery">
+      <div class="border">
+        <a target="_blank" href="assets/7fc8ce795af872680dd352b3a633d941.jpg"><img src="{{ url_for('static', filename='assets/7fc8ce795af872680dd352b3a633d941.jpg') }}" alt="lashes1" style="width: 250px; border-radius: 25px;">
+        </a> 
+      </div>
+      <div class="border">
+        <a target="_blank" href="assets/5cfbdc412e1174c022e84f73953fc65c.jpg"><img src="{{ url_for('static', filename='assets/5cfbdc412e1174c022e84f73953fc65c.jpg') }}" alt="lashes2" style="width: 250px; border-radius: 25px;" >
+        </a>     
+        </div> 
+        <div class="border">
+        <a target="_blank" href="assets/80d098e332c854286384b06487f5b295.jpg"><img src="{{ url_for('static', filename='assets/80d098e332c854286384b06487f5b295.jpg') }}" alt="lashes3" style="width: 250px; border-radius: 25px;">
+        </a>
+       </div> 
+    </div>          
+</div> 
+<div class="footer">
+ <footer style="background-color:rgba(255, 105, 193, 0.763);">
+        <img src="{{ url_for('static', filename='assets/8d2a6119-0773-4aef-9b91-c34534ad9315.png') }}" alt="logo" style="width:115px"><br>
+        &copy; copyright reserved <br>
+        <a href="mailto: pinkinkstudio@gmail.com">pinkinkstudio@gmail.com</a>
+      </footer>   
+</div>    
+</body>
+</html>

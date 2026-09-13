@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css')}}">
+</head>
+<body>
+    <div class="bar">
+        <span>PINK INK ♡ STUDIO</span>
+    </div>
+    <br>
+    <nav>
+        <a href="{{ url_for('admin_dashboard') }}" class="active">
+            Dashboard
+        </a>&nbsp;
+        <a href="{{ url_for('admin') }}">
+            Bookings
+        </a>&nbsp;
+        <a href="{{ url_for('admin_logout') }}">
+            Logout
+        </a>
+    </nav>
+    <br>
+    <h1>Dashboard</h1>
+    <p>Here is an overview of your studio</p>
+    <br>
+    <div class="stats">
+         <div class="stat-card">
+            <h3>&nbsp;Total Bookings</h3>
+            <p>&nbsp;{{ total_bookings}}</p>
+        </div>
+        <br>
+        <div class="stat-card">
+            <h3>&nbsp;Confirmed Bookings</h3>
+            <p>&nbsp;{{ confirmed_bookings }}</p>
+        </div>
+        <br>
+        <div class="stat-card">
+            <h3>&nbsp;Canceled Bookings</h3>
+            <p>&nbsp;{{ canceled_bookings }}</p>
+        </div>
+        <br>
+        <div class="stat-card">
+            <h3>&nbsp;Total Revenue</h3>
+            <p>&nbsp;{{ total_revenue }}</p>
+        </div>
+    </div>
+    
+</body>
+</html>
