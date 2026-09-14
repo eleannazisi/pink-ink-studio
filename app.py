@@ -7,6 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask_wtf.csrf import CSRFProtect
+from email_validator import validate_email, EmailNotValidError
 
 load_dotenv()
 
@@ -51,65 +52,83 @@ def book():
         services = request.form.getlist("services")
         day = request.form.get("day")
         time = request.form.get("time")
-        cursor = db.cursor()
 
-        cursor.execute ("""
+        if not name or not phone or not email or not services or not day or not time:
+            return render_template("book.html", booking_error="fill in all fields.")
 
-        SELECT id
-        FROM bookings
-        WHERE day = %s AND time = %s AND status != 'canceled' 
-        """, (day, time))
+        if not name.replace(" ", "").isalpha():
+            return render_template("book.html", booking_error="Enter a valid name.")
+        
+        try:
+            cursor = db.cursor()
 
-        existing_booking = cursor.fetchone()
+            cursor.execute ("""
 
-        if existing_booking:
-            cursor.close()
-            return render_template("book.html", booking_error=True)    
+            SELECT id
+            FROM bookings
+            WHERE day = %s AND time = %s AND status != 'canceled' 
+            """, (day, time))
 
-        sql = """
-        INSERT INTO bookings
-        (full_name, phone, email, day, time, status)
-        VALUES (%s, %s, %s, %s, %s, %s)
-        """
+            existing_booking = cursor.fetchone()
 
-        values = (name, phone, email, day, time, "confirmed")
+            if existing_booking:
+                cursor.close()
+                return render_template("book.html", booking_error="This date and time are already booked")    
 
-        cursor.execute(sql, values)
+            try:
+                validate_email(email)
+            except EmailNotValidError:
+                return render_template("book.html", booking_error="enter a valid email address.")    
+            
+            if not phone.isdigit() or len(phone) != 10 or not phone.startswith("69"):
+                return render_template("book.html", booking_error="Enter a valid greek mobile number.")
 
-        booking_id = cursor.lastrowid
-        service_sql = "SELECT id FROM services WHERE name = %s"
-
-        for service in services:
-            cursor.execute(service_sql, (service,))
-            result = cursor.fetchone()
-            service_id = result[0]
-
-            booking_service_sql = """
-            INSERT INTO booking_services
-            (booking_id, service_id)
-            VALUES (%s, %s)
+            sql = """
+            INSERT INTO bookings
+            (full_name, phone, email, day, time, status)
+            VALUES (%s, %s, %s, %s, %s, %s)
             """
 
-            cursor.execute(
-                booking_service_sql,
+            values = (name, phone, email, day, time, "confirmed")
+
+            cursor.execute(sql, values)
+
+            booking_id = cursor.lastrowid
+            service_sql = "SELECT id FROM services WHERE name = %s"
+
+            for service in services:
+                cursor.execute(service_sql, (service,))
+                result = cursor.fetchone()
+
+                if result is None:
+                    cursor.close()
+                    return render_template("book.html", booking_error="Invalid service selected.")
+
+                service_id = result[0]
+
+                booking_service_sql = """
+                INSERT INTO booking_services
                 (booking_id, service_id)
-            )
+                VALUES (%s, %s)
+                """
 
-        db.commit()
+                cursor.execute(
+                    booking_service_sql,
+                    (booking_id, service_id)
+                )
 
-        cursor.close()
+            db.commit()
 
-        print(request.form)
+            cursor.close()    
 
-        print(name)
-        print(phone)
-        print(email)
-        print(services)
-        print(day)
-        print(time)
-        print("database connected")
+            return render_template("book.html", booking_success=True, booking_id=booking_id, name=name, day=day, time=time, services=services)
+                
 
-        return render_template("book.html", booking_success=True, booking_id=booking_id, name=name, day=day, time=time, services=services)
+        except Exception as e:
+            db.rollback()
+            print ("database error:", e)
+
+            return render_template("book.html", booking_error="Something went wrong. Please try again.")   
 
     return render_template("book.html")
 
