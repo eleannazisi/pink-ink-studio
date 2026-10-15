@@ -57,7 +57,7 @@ python app.py
 
 ### Home
 
-```bash
+
 
 ![Home Page](screenshots/home1.png)
 
@@ -75,10 +75,8 @@ python app.py
 
 ![Contact Page](screenshots/contact.png)
 
-```
+
 
 ### Admin
 
-```bash
 ![Admin Page](screenshots/admin.png)
-```
